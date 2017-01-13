@@ -1,14 +1,165 @@
-# functions ---------------------------------------------------------------
+# get vector ----------------------------------------------------------------
+seq(2, 6, by = 2)
+seq(2, by = 10, length.out = 10)
 
+rep(x = c("a", "b"), 2)
+rep(x = c("a", "b"), each = 4)
+
+runif(10, min = 4, max = 10)
+
+set.seed(13012017)
+runif(10, min = 4, max = 10)
+
+set.seed(13012017)
+sample(1:100, 50)
+
+sample(c("a", "b", "c", "b"), 50, replace = T)
+
+# functions ---------------------------------------------------------------
+my_mult <- function(x, y){x*y}
+my_mult(2, 3)
+
+detect_oddness <- function(x){
+  ifelse(x %% 2 == 0, "odd", "even")
+}
+
+detect_oddness(3)
+
+# MySum
+# my.sum
+# my_sum
+# 
+random_cube <- function(){
+  thr <- sample(1:6, 2, replace = T)
+  print(thr)
+  ifelse(thr[1] > thr[2], "you win", "you loose")
+}
+
+random_cube()
+
+multiplication <- function(x, y = 10){x*y}
+multiplication(2)
+multiplication(x = 3, y = 17)
+multiplication(y = 17, x = 3)
+multiplication(17, 3) != multiplication(3, 17)
+
+seq(2, from = 2, to = 5)
+seq(2, f = 2, t = 5)
 
 # apply, sapply ... -------------------------------------------------------
+nchar(month.name)
 
+marks <- data.frame(
+  Mary = c(4, 5, 4, 2, 3, 3, 2),
+  John = c(5, 4, 2, 2, 3, 2, 3),
+  George = c(2, 5, 4, 5, 3, 3, 2),
+  Angela = c(5, 5, 5, 5, 4, 5, 3)
+)
 
+apply(X = marks, MARGIN = 1, FUN = mean)
+apply(X = marks, MARGIN = 2, FUN = mean)
+apply(marks, 2, function(x){mean(x)})
+apply(marks, 2, function(x){mean(x, na.rm = T)})
+sapply(month.name, nchar)
+new_marks <- list(
+  Mary = c(5, 4, 5, 4, 5, 2, 3),
+  John = c(5, 2, 3),
+  Sam = c(3, 2, 3, 2,3)
+)
+
+lapply(new_marks, length)
+lapply(new_marks, mean)
+sapply(new_marks, mean)
 
 # data from [Chi-kuk 2007] ------------------------------------------------
 homo <- read.csv("http://goo.gl/Zjr9aF")
 View(homo)
 
 # data manipulating -------------------------------------------------------
-# install.packages("tidyverse")
+# nstall.packages("tidyverse")
 library(tidyverse)
+homo <- tbl_df(homo)
+homo[homo$age > 28,]
+homo %>%
+  filter(age < 28)
+
+round(sqrt(1:100*3), 2)
+
+1:100*3 %>% 
+  sqrt() %>% 
+  round(., 2) ->
+  pf
+  
+pf <- 1:100*3 %>% 
+  sqrt() %>% 
+  round(., 2)
+
+homo %>%
+  filter(age < 28, s.duration.ms > 60)
+
+homo[homo$age < 28 & homo$s.duration.ms > 60, ]
+
+homo %>%
+  select(age)
+
+homo %>%
+  select(3)
+
+homo %>%
+  select(2:4)
+
+homo %>%
+  select(speaker:vowel.duration.ms)
+
+homo %>%
+  select(-1)
+
+homo %>%
+  select(-c(1:4))
+
+homo %>%
+  slice(4:8)
+
+
+homo %>%
+  filter(homo$age > 28) %>% 
+  select(speaker)
+
+homo[order(homo$s.duration.ms),]
+
+homo %>% 
+  arrange(s.duration.ms)
+
+homo[order(-homo$s.duration.ms),]
+
+homo %>% 
+  arrange(desc(s.duration.ms))
+
+homo %>% 
+  distinct(orientation)
+
+unique(homo$orientation)
+
+homo$asdfghjkl <- NA
+str(homo)
+homo$age <- homo$age + 2
+str(homo)
+
+homo %>% 
+  mutate(lkjhh = homo$age + 19)
+
+df.short <- data.frame(
+  consonant = c("stops", "fricatives", "affricates", "nasals"),
+  initial = c(123, 87, 73, 7),
+  intervocal = c(57, 77, 82, 78),
+  final = c(30, 69, 12, 104))
+
+df.short %>%
+  gather(position, number, initial:final) ->
+  df.long; df.long
+
+
+df.long %>%
+  spread(position, number) ->
+  df.short; df.short
+

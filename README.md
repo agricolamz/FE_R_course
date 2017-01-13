@@ -11,5 +11,5 @@
 ### Занятие 2. Пользовательские функции. Функции семейства apply. Манипуляции с данными. Пакет tidyverse.
 
 * [файл с занятия](https://raw.githubusercontent.com/agricolamz/FE_R_course/master/Lab 2.R)
-* [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%202.%20advanced_data_manipulation.pdf)
+* [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%202.%20advanced_data_manipulation.pdf) (покрывает только часть лекции)
 * домашнее задание
