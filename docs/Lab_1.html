@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="refresh" content=10/>
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Введение в R и RStudio. Вектор. Датафрем. Установка и работа с пакетами</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab_1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab_2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab_3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Lab_4-6.html">Lab 4-6</a>
+</li>
+<li>
+  <a href="Lab_7.html">Lab 7</a>
+</li>
+<li>
+  <a href="Lab_8-9.html">Lab 8-9</a>
+</li>
+<li>
+  <a href="Lab_10-11.html">Lab 10-11</a>
+</li>
+<li>
+  <a href="Lab_12.html">Lab 12</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Введение в R и RStudio. Вектор. Датафрем. Установка и работа с пакетами</h1>
+
+</div>
+
+
+<pre class="r"><code># calculator --------------------------------------------------------------
+2+2
+4-2
+4*2
+4/3
+4^8
+4**8
+sum(2, 3, 4, 5, 6)
+prod(2, 3, 4, 5, 6)
+# Modulo
+25 %% 3
+# put a link here
+choose(6, 3)
+abs(-2)
+-Inf
+pi
+exp(1)
+
+# variables ---------------------------------------------------------------
+a &lt;- 2
+a + 1
+a
+a &lt;- a + 1
+a + 1 -&gt; a
+a
+a = 4 # Not really cool
+
+# base units -------------------------------------------------------------
+typeof(1)
+typeof(1L)
+typeof(1+2i)
+typeof(&#39;dsfghj&#39;)
+typeof(&quot;sdfghj&quot;)
+typeof(TRUE)
+typeof(FALSE)
+# typeof(False)
+typeof(F)
+typeof(T)
+typeof(NA)
+typeof(NULL)
+typeof(-Inf)
+typeof(NaN)
+typeof(abs)
+
+# vectors -----------------------------------------------------------------
+c &lt;- 100:2
+c
+a &lt;- letters
+a
+b &lt;- LETTERS
+b
+b &lt;- c(4, 56, 98)
+b
+n &lt;- c(T, F, T, T)
+n
+m &lt;- c(2, &quot;f&quot;, 9+2i)
+m
+m &lt;- c(2, 9+2i)
+m
+days &lt;- c(&quot;понедельник&quot;, &quot;вторник&quot;, &quot;среда&quot;, &quot;устал&quot;)
+days
+
+new &lt;- c(m, days)
+new
+
+# named vector
+l &lt;- c(1:4) 
+l
+names(l) &lt;- c(&quot;один&quot;, &quot;два&quot;, &quot;три&quot;, &quot;четыре&quot;)
+l
+
+q &lt;- c(a = 7, b = 29, g = 76) 
+q
+
+r &lt;- c(&quot;a&quot; = 7, &quot;b&quot; = 29, &quot;g&quot; = 76) 
+r
+
+# matrices ------------------------------------------------------------------
+matrix(2:9, nrow = 4)
+matrix(2:9, ncol = 4)
+matrix(2:8, ncol = 4) # :(
+m &lt;- matrix(2:9, ncol = 4)
+dim(m)  
+m &lt;- matrix(2:9)
+dim(m) &lt;- c(4,2)
+m
+# Wow!I changed dimentions!
+m &lt;- matrix(2:9, nrow = 2)
+m
+
+m &lt;- matrix(2:9, nrow = 2, byrow = T)
+m
+
+t(m)
+
+# lists -------------------------------------------------------------------
+
+list(a = c(T, F, T, F),
+     b = c(&quot;мама&quot;, &quot;папа&quot;),
+     c = c(99:43))
+
+a &lt;- list(a = c(T, F, T, F),
+          b = c(&quot;мама&quot;, &quot;папа&quot;),
+          c = c(99:43))
+
+a &lt;- list(a = c(T, F, T, F),
+          b = c(&quot;мама&quot;, &quot;папа&quot;),
+          c = c(99:43))
+
+# factors -----------------------------------------------------------------
+colors &lt;- c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;blue&quot;)
+typeof(colors)
+a &lt;- factor(colors)
+levels(a) &lt;- c(&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;)
+
+# dataframes --------------------------------------------------------------
+data.frame(education = c(&quot;h&quot;, &quot;h&quot;, &quot;e&quot;),
+           gender = c(&quot;f&quot;, &quot;f&quot;, &quot;m&quot;),
+           height = c(168, 175, 190),
+           love_cola = c(T, F, T)) -&gt; my_students
+
+my_students
+mtcars
+cars
+iris
+
+# libraries ---------------------------------------------------------------
+library(cluster)
+install.packages(&quot;lingtypology&quot;)
+library(lingtypology)
+map.feature(c(&quot;Russian&quot;, &quot;Adyghe&quot;))
+map.feature(lang.aff(&quot;Sign&quot;), control = FALSE)
+
+# logical equation --------------------------------------------------------
+2 &gt; 1
+1 &lt; 0
+54 &lt;= 54
+63 &gt;= 100
+&quot;папа&quot; != &quot;мама&quot;
+&quot;папа&quot; == &quot;мама&quot;
+c(&quot;папа&quot;, &quot;мама&quot;) == &quot;мама&quot;
+
+c(&quot;папа&quot;, &quot;мама&quot;) == c(&quot;папа&quot;, &quot;тата&quot;)
+
+1:10 + 10:1
+
+
+# workspace, reading and writing files ------------------------------------
+setwd(&quot;/home/agricolamz/_DATA/OneDrive1/_Work/_Handouts/2017 II R for AC&quot;)
+write.csv(mtcars, &quot;mtcars.csv&quot;)
+df &lt;- read.csv(&quot;mtcars.csv&quot;)
+View(df)
+df[11, ]
+
+# loops -------------------------------------------------------------------
+a &lt;- 9
+if(a &gt; 10){
+  print(&quot;hi&quot;)
+}
+
+
+a &lt;- 6
+if(a %% 2 &gt; 0){
+  print(&quot;odd&quot;)
+} else{
+  print(&quot;even&quot;)
+}
+
+a &lt;- 1:10
+for(i in a){
+  if(i %% 2 &gt; 0){
+    print(&quot;odd&quot;)
+  } else{
+    print(&quot;even&quot;)
+  }
+}
+
+ifelse(a %% 2 &gt; 0, &quot;odd&quot;, &quot;even&quot;)
+
+i &lt;- 1
+while(i &lt; 10){
+  print(i)
+  i &lt;- i+1
+}
+
+print(i); i &lt;- i+1
+
+
+# useful functions --------------------------------------------------------
+summary(mtcars)
+str(mtcars)
+head(letters, 3)
+tail(LETTERS, 5)
+ls()
+
+# indexing ----------------------------------------------------------------
+f &lt;- 1:100
+f
+
+f[57]
+f &gt; 50
+f[f &gt; 50]
+
+f %% 2 == 0
+
+f[f %% 2 == 0]
+
+a &lt;- c(girl1 = &quot;brown&quot;,
+       girl2 = &quot;brown&quot;,
+       girl3 = &quot;grey&quot;)
+
+a[&quot;girl1&quot;]
+
+str(mtcars)
+mtcars[4,] # 4th row
+mtcars[,6] # 8th column
+mtcars$wt # one column
+mtcars$wt &lt; 5
+mtcars[mtcars$wt &lt; 5, ]
+mtcars[mtcars$wt &lt; 5, 4:8]</code></pre>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
