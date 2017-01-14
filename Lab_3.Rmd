@@ -4,3 +4,5 @@ title: "Работа со строками. Пакет stringr"
 ```{r, eval= T}
 print(letters)
 ```
+
+Вот как-то так.
