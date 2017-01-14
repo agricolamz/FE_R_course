@@ -2,6 +2,6 @@
 title: "Работа со строками. Пакет stringr"
 ---
 ```{r, eval= F}
-x <- 2:10
-# опп
+letters
+LETTERS
 ```
