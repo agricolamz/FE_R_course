@@ -1,0 +1,23 @@
+name: ""
+output_dir: "docs"
+navbar:
+  title: ""
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Lab 1"
+      href: Lab_1.html
+    - text: "Lab 2"
+      href: Lab_2.html
+    - text: "Lab 3"
+      href: Lab_3.html
+    - text: "Lab 4-6"
+      href: Lab_4-6.html
+    - text: "Lab 7"
+      href: Lab_7.html
+    - text: "Lab 8-9"
+      href: Lab_8-9.html
+    - text: "Lab 10-11"
+      href: Lab_10-11.html
+    - text: "Lab 12"
+      href: Lab_12.html
