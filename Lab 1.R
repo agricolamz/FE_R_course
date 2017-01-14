@@ -1,3 +1,4 @@
+```{r, eval= FALSE}
 # calculator --------------------------------------------------------------
 2+2
 4-2
@@ -170,10 +171,10 @@ a <- 1:10
 for(i in a){
   if(i %% 2 > 0){
     print("odd")
-    } else{
-      print("even")
-    }
+  } else{
+    print("even")
   }
+}
 
 ifelse(a %% 2 > 0, "odd", "even")
 
@@ -185,7 +186,7 @@ while(i < 10){
 
 print(i); i <- i+1
 
-  
+
 # useful functions --------------------------------------------------------
 summary(mtcars)
 str(mtcars)
@@ -218,3 +219,5 @@ mtcars$wt # one column
 mtcars$wt < 5
 mtcars[mtcars$wt < 5, ]
 mtcars[mtcars$wt < 5, 4:8]
+
+```

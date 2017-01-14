@@ -1,0 +1,54 @@
+---
+author: "G. Moroz"
+output: html_document
+  
+---
+# Лекции {.tabset .tabset-fade .tabset-pills}
+
+## Lab 1
+```{r child = 'Lab 1.R'}
+```
+
+## Lab 2
+```{r child = 'Lab 2.R'}
+```
+
+## Lab 3
+```{r child = 'Lab 3.R'}
+```
+
+## Lab 4
+```{r child = 'Lab 4.R'}
+```
+
+## Lab 5
+```{r child = 'Lab 5.R'}
+```
+
+## Lab 6
+```{r child = 'Lab 6.R'}
+```
+
+## Lab 7
+```{r child = 'Lab 7.R'}
+```
+
+## Lab 8
+```{r child = 'Lab 8.R'}
+```
+
+## Lab 9
+```{r child = 'Lab 9.R'}
+```
+
+## Lab 10
+```{r child = 'Lab 10.R'}
+```
+
+## Lab 11
+```{r child = 'Lab 11.R'}
+```
+
+## Lab 12
+```{r child = 'Lab 12.R'}
+```

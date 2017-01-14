@@ -1,3 +1,4 @@
+```{r, eval= FALSE}
 # get vector ----------------------------------------------------------------
 seq(2, 6, by = 2)
 seq(2, by = 10, length.out = 10)
@@ -89,7 +90,7 @@ round(sqrt(1:100*3), 2)
   sqrt() %>% 
   round(., 2) ->
   pf
-  
+
 pf <- 1:100*3 %>% 
   sqrt() %>% 
   round(., 2)
@@ -162,4 +163,4 @@ df.short %>%
 df.long %>%
   spread(position, number) ->
   df.short; df.short
-
+```
