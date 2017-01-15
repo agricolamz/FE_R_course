@@ -12,4 +12,4 @@
 
 * [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_2.html)
 * [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%202.%20advanced_data_manipulation.pdf) (покрывает только часть лекции)
-* домашнее задание
+* [домашнее задание](https://goo.gl/forms/vAgbDJ4kIXUYAQVm1)
