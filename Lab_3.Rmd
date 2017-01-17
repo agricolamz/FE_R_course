@@ -50,6 +50,6 @@ left_join(languages, country_population)
 right_join(languages, country_population)
 anti_join(languages, country_population)
 
-
+full_join(country_population, languages)
 ```
 
