@@ -16,5 +16,15 @@ f
 
 
 rbind(g, f)
+
+h <- rnorm(21)
+dim(h) <- c(3, 7)
+h <- as.data.frame(h)
+h
+
+
+cbind(f, h)
+
+
 ```
 
