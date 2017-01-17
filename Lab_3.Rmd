@@ -34,10 +34,12 @@ languages <- data.frame(
   languages = c("Selkup", "Itelmen", "Chukchi", "Kashubian"),
   countries = c("Russia", "Russia", "Russia", "Poland"),
   iso = c("sel", "itl", "ckt", "pol"))
+languages
 
 country_population <- data.frame(
   countries = c("Russia", "Poland", "Finland"),
   population = c(143, 38, 5))
+country_population
 
 library(dplyr)
 
