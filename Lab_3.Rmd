@@ -32,7 +32,7 @@ cbind(f, h)
 ```{r}
 languages <- data.frame(
   languages = c("Selkup", "Itelmen", "Chukchi", "Kashubian"),
-  countries = c("Russia", "Russian", "Russia", "Poland"),
+  countries = c("Russia", "Russia", "Russia", "Poland"),
   iso = c("sel", "itl", "ckt", "pol"))
 
 country_population <- data.frame(
