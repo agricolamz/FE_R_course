@@ -13,3 +13,8 @@
 * [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_2.html)
 * [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%202.%20advanced_data_manipulation.pdf) (покрывает только часть лекции)
 * [домашнее задание](https://goo.gl/forms/vAgbDJ4kIXUYAQVm1)
+
+### Занятие 3. Joins. Работа со строками. Пакет stringr
+
+* [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_3.html)
+* [презентация](https://hse-compling-class.wikispaces.com/file/view/working_with_strings.pdf/604306362/working_with_strings.pdf) (покрывает только часть лекции)

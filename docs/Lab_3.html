@@ -11,7 +11,7 @@
 
 
 
-<title>Работа со строками. Пакет stringr</title>
+<title>Joins. Работа со строками. Пакет stringr</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -214,12 +214,93 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Работа со строками. Пакет stringr</h1>
+<h1 class="title toc-ignore">Joins. Работа со строками. Пакет stringr</h1>
 
 </div>
 
 
+<div id="joins" class="section level1">
+<h1>Joins</h1>
+<pre class="r"><code>languages &lt;- data.frame(languages = c(&quot;Selkup&quot;, &quot;Itelmen&quot;, &quot;Chukchi&quot;, &quot;Kashubian&quot;),
+                        countries = c(&quot;Russia&quot;, &quot;Russian&quot;, &quot;Russia&quot;, &quot;Poland&quot;),
+                        iso = c(&quot;sel&quot;, &quot;itl&quot;, &quot;ckt&quot;, &quot;pol&quot;))
 
+country_population &lt;- data.frame(countries = c(&quot;Russia&quot;, &quot;Poland&quot;, &quot;Finland&quot;),
+                                 population = c(143, 38, 5))
+
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>inner_join(languages, country_population)</code></pre>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>## Warning in inner_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
+## factors with different levels, coercing to character vector</code></pre>
+<pre><code>##   languages countries iso population
+## 1    Selkup    Russia sel        143
+## 2   Chukchi    Russia ckt        143
+## 3 Kashubian    Poland pol         38</code></pre>
+<pre class="r"><code>semi_join(languages, country_population)</code></pre>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>##   languages countries iso
+## 1    Selkup    Russia sel
+## 2   Chukchi    Russia ckt
+## 3 Kashubian    Poland pol</code></pre>
+<pre class="r"><code>left_join(languages, country_population)</code></pre>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>## Warning in left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
+## factors with different levels, coercing to character vector</code></pre>
+<pre><code>##   languages countries iso population
+## 1    Selkup    Russia sel        143
+## 2   Itelmen   Russian itl         NA
+## 3   Chukchi    Russia ckt        143
+## 4 Kashubian    Poland pol         38</code></pre>
+<pre class="r"><code>anti_join(languages, country_population)</code></pre>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>##   languages countries iso
+## 1   Itelmen   Russian itl</code></pre>
+<pre class="r"><code>inner_join(country_population, languages)</code></pre>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>## Warning in inner_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
+## factors with different levels, coercing to character vector</code></pre>
+<pre><code>##   countries population languages iso
+## 1    Russia        143    Selkup sel
+## 2    Russia        143   Chukchi ckt
+## 3    Poland         38 Kashubian pol</code></pre>
+<pre class="r"><code>semi_join(country_population, languages)</code></pre>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>##   countries population
+## 1    Russia        143
+## 2    Poland         38</code></pre>
+<pre class="r"><code>left_join(country_population, languages)</code></pre>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>## Warning in left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
+## factors with different levels, coercing to character vector</code></pre>
+<pre><code>##   countries population languages  iso
+## 1    Russia        143    Selkup  sel
+## 2    Russia        143   Chukchi  ckt
+## 3    Poland         38 Kashubian  pol
+## 4   Finland          5      &lt;NA&gt; &lt;NA&gt;</code></pre>
+<pre class="r"><code>anti_join(country_population, languages)</code></pre>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>##   countries population
+## 1   Finland          5</code></pre>
+<pre class="r"><code>full_join(country_population, languages)</code></pre>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>## Warning in full_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
+## factors with different levels, coercing to character vector</code></pre>
+<pre><code>##   countries population languages  iso
+## 1    Russia        143    Selkup  sel
+## 2    Russia        143   Chukchi  ckt
+## 3    Poland         38 Kashubian  pol
+## 4   Finland          5      &lt;NA&gt; &lt;NA&gt;
+## 5   Russian         NA   Itelmen  itl</code></pre>
+</div>
 
 
 
