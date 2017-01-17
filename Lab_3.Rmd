@@ -23,6 +23,9 @@ h <- as.data.frame(h)
 h
 
 cbind(f, h)
+
+# cbind.data.frame()
+# rbind.data.frame()
 ```
 
 
