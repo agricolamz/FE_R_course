@@ -53,3 +53,9 @@ anti_join(languages, country_population)
 full_join(country_population, languages)
 ```
 
+# Strings
+```{r}
+paste("mm", "ff")
+paste0("mm", "ff")
+```
+
