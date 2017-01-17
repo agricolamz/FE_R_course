@@ -62,5 +62,8 @@ paste(c("F", letters[1:5]))
 paste(c("F", letters[1:5]), collapse = "+")
 
 toupper("σδασφδασφ")
+
+b <- c("the", "quick", "brown", "fox")
+substring(b, 2) <- c("1", "22", "333") ; b
 ```
 
