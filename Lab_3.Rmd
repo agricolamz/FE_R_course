@@ -57,5 +57,8 @@ full_join(country_population, languages)
 ```{r}
 paste("mm", "ff")
 paste0("mm", "ff")
+
+paste(c("F", letters[1:5]))
+paste(c("F", letters[1:5]), collapse = "+")
 ```
 
