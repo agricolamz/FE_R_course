@@ -14,5 +14,7 @@ dim(f) <- c(3, 10)
 f <- as.data.frame(f)
 f
 
+
+rbind(g, f)
 ```
 
