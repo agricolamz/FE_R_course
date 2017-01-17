@@ -65,5 +65,7 @@ toupper("σδασφδασφ")
 
 b <- c("the", "quick", "brown", "fox")
 substring(b, 2) <- c("1", "22", "333") ; b
+
+month.name[grepl("a", month.name)]
 ```
 
