@@ -72,5 +72,15 @@ month.name[grepl("A|a", month.name)]
 
 is.element("May", month.name)
 "May" %in% month.name
+
+
+library(rvest)
+source <- read_html("https://ling.hse.ru/news/")
+
+# get titles by css selector
+source %>% 
+  html_nodes("a.link.link_dark2.no-visited") %>%
+  html_text() -> 
+  titles; titles
 ```
 
