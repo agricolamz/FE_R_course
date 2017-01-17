@@ -5,7 +5,14 @@ title: "Joins. Работа со строками. Пакет stringr"
 
 ```{r}
 g <- rnorm(50)
+dim(g) <- c(5, 10)
+g <- as.data.frame(g)
+g
 
+f <- rnorm(30)
+dim(f) <- c(3, 10)
+f <- as.data.frame(f)
+f
 
 ```
 
