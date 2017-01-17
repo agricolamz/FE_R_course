@@ -28,4 +28,18 @@ cbind(f, h)
 # rbind.data.frame()
 ```
 
+# Joins
+```{r}
+languages <- data.frame(
+  languages = c("Selkup", "Itelmen", "Chukchi", "Kashubian"),
+  countries = c("Russia", "Russian", "Russia", "Poland"),
+  iso = c("sel", "itl", "ckt", "pol"))
+
+country_population <- data.frame(
+  countries = c("Russia", "Poland", "Finland"),
+  population = c(143, 38, 5))
+
+library(dplyr)
+
+```
 
