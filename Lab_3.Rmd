@@ -42,6 +42,12 @@ country_population <- data.frame(
 country_population
 
 library(dplyr)
+inner_join(languages, country_population)
+semi_join(languages, country_population)
+left_join(languages, country_population)
+right_join(languages, country_population)
+anti_join(languages, country_population)
+
 
 ```
 
