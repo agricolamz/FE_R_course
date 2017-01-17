@@ -67,5 +67,10 @@ b <- c("the", "quick", "brown", "fox")
 substring(b, 2) <- c("1", "22", "333") ; b
 
 month.name[grepl("a", month.name)]
+month.name[!grepl("a", month.name)]
+month.name[grepl("A|a", month.name)]
+
+is.element("May", month.name)
+"May" %in% month.name
 ```
 
