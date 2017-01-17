@@ -1,26 +1,11 @@
 ---
 title: "Joins. Работа со строками. Пакет stringr"
 ---
-# Joins
-```{r, eval = FALSE}
-languages <- data.frame(languages = c("Selkup", "Itelmen", "Chukchi", "Kashubian"),
-                        countries = c("Russia", "Russian", "Russia", "Poland"),
-                        iso = c("sel", "itl", "ckt", "pol"))
+# cbind, rbind
 
-country_population <- data.frame(countries = c("Russia", "Poland", "Finland"),
-                                 population = c(143, 38, 5))
+```{r}
+g <- rnorm(50)
 
-library(dplyr)
-inner_join(languages, country_population)
-semi_join(languages, country_population)
-left_join(languages, country_population)
-anti_join(languages, country_population)
 
-inner_join(country_population, languages)
-semi_join(country_population, languages)
-left_join(country_population, languages)
-anti_join(country_population, languages)
-
-full_join(country_population, languages)
 ```
 

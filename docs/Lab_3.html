@@ -219,27 +219,9 @@ $(document).ready(function () {
 </div>
 
 
-<div id="joins" class="section level1">
-<h1>Joins</h1>
-<pre class="r"><code>languages &lt;- data.frame(languages = c(&quot;Selkup&quot;, &quot;Itelmen&quot;, &quot;Chukchi&quot;, &quot;Kashubian&quot;),
-                        countries = c(&quot;Russia&quot;, &quot;Russian&quot;, &quot;Russia&quot;, &quot;Poland&quot;),
-                        iso = c(&quot;sel&quot;, &quot;itl&quot;, &quot;ckt&quot;, &quot;pol&quot;))
-
-country_population &lt;- data.frame(countries = c(&quot;Russia&quot;, &quot;Poland&quot;, &quot;Finland&quot;),
-                                 population = c(143, 38, 5))
-
-library(dplyr)
-inner_join(languages, country_population)
-semi_join(languages, country_population)
-left_join(languages, country_population)
-anti_join(languages, country_population)
-
-inner_join(country_population, languages)
-semi_join(country_population, languages)
-left_join(country_population, languages)
-anti_join(country_population, languages)
-
-full_join(country_population, languages)</code></pre>
+<div id="cbind-rbind" class="section level1">
+<h1>cbind, rbind</h1>
+<pre class="r"><code>g &lt;- rnorm(50)</code></pre>
 </div>
 
 
