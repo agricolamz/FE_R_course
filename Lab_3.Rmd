@@ -60,5 +60,7 @@ paste0("mm", "ff")
 
 paste(c("F", letters[1:5]))
 paste(c("F", letters[1:5]), collapse = "+")
+
+toupper("σδασφδασφ")
 ```
 
