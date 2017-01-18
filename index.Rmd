@@ -3,7 +3,7 @@ title: "Курс 'R, визуализация и статистика'"
 ---
 
 ### Установка R и RStudio.
-[R](https://www.r-project.org/), [RStudio](https://www.rstudio.com/products/rstudio/download/#download), [RStudio online](https://www.rollapp.com/app/rstudio), [R-bloggers](https://www.r-bloggers.com/)
+[R](https://www.r-project.org/), [RStudio](https://www.rstudio.com/products/rstudio/download/#download), [RStudio online](https://www.rollapp.com/app/rstudio), [Cоединение RStudio и GitHub](http://happygitwithr.com/rstudio-git-github.html), [R-bloggers](https://www.r-bloggers.com/)
 
 ### Занятие 1. Введение в R и RStudio. Вектор. Датафрем. Установка и работа с пакетами.
 

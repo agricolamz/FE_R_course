@@ -45,7 +45,7 @@ country_population
 library(dplyr)
 inner_join(languages, country_population)
 #semi_join(country_population, languages) -> df
-# str(df)
+str(df)
 left_join(languages, country_population)
 right_join(languages, country_population)
 anti_join(languages, country_population)
@@ -72,7 +72,10 @@ month.name[grepl("A|a", month.name)]
 
 is.element("May", month.name)
 "May" %in% month.name
+```
 
+# Обкачивание страниц при помощи css-селектора
+```{r}
 # install.packages("rvest")
 library(rvest)
 source <- read_html("https://ling.hse.ru/news/")
