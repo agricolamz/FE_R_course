@@ -394,6 +394,10 @@ df</code></pre>
 ## 1     Маша     50
 ## 2     Саша     40
 ## 3 Василиса     10</code></pre>
+<pre class="r"><code>df %&gt;% 
+  ggplot(aes(names, number))+
+  geom_bar(stat = &quot;identity&quot;)</code></pre>
+<p><img src="Lab_4_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 
 
 
