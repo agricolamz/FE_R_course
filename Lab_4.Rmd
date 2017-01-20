@@ -58,13 +58,12 @@ df %>%
 ```{r}
 # install.packages("devtools")
 # devtools::install_github("dgrtwo/gganimate")
-# devtools::install_github("dgrtwo/gganimate")
-install.packages('ggthemes', dependencies = TRUE)
+# install.packages('ggthemes', dependencies = TRUE)
 ```
 
 ### Plotly
 ```{r}
-install.packages("plotly")
+# install.packages("plotly")
 ```
 
 
