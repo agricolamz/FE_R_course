@@ -2,3 +2,30 @@
 title: "Визуализация данных. Пакет ggplot2 и его расширения. Пакет plotly. R Markdown. R Notebook. Shiny"
 ---
 
+```{r}
+library(tidyverse)
+chi.kuk <- read.csv("http://goo.gl/Zjr9aF")
+ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration.ms)) +
+  geom_smooth() +
+  geom_point()
+```
+```{r}
+ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration.ms)) +
+  geom_smooth(aes(color = "red")) +
+  geom_point()
+
+```
+
+```{r}
+ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration.ms)) +
+  geom_smooth() +
+  geom_point(aes(color = "red"))
+
+```
+```{r}
+ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration.ms, color = "red")) +
+  geom_smooth() +
+  geom_point()
+
+```
+
