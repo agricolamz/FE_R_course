@@ -231,7 +231,72 @@ $(document).ready(function () {
 </div>
 
 
+<div id="ggplot-news" class="section level3">
+<h3>ggplot News</h3>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<div id="legend-position" class="section level4">
+<h4>Legend position</h4>
+<pre class="r"><code>mpg %&gt;% 
+  ggplot(aes(displ,hwy, colour = manufacturer)) +
+  geom_point()</code></pre>
+<p><img src="Lab_4_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>mpg %&gt;% 
+  ggplot(aes(displ,hwy, colour = manufacturer)) +
+  geom_point() +
+  theme(legend.position = &quot;bottom&quot;)</code></pre>
+<p><img src="Lab_4_files/figure-html/unnamed-chunk-3-1.png" width="672" /> #### Labels</p>
+<pre class="r"><code>mpg %&gt;% 
+  ggplot(aes(displ,hwy, colour = manufacturer)) +
+  geom_point() +
+  labs(title = &quot;Main title&quot;, subtitle =&quot;Very long subtitle!&quot;, caption = &quot;data from ...&quot;)</code></pre>
+<p><img src="Lab_4_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="facets" class="section level4">
+<h4>Facets</h4>
+<pre class="r"><code>mtcars %&gt;% 
+  mutate(
+    Logarithmic = log(mpg),
+    Inverse = 1 / mpg,
+    Cubic = mpg ^ 3,
+    Original = mpg) %&gt;%
+  gather(transformation, mpg2, Logarithmic:Original) -&gt;
+  df
 
+df %&gt;% 
+  ggplot(aes(mpg2, disp)) +
+  geom_point() +
+  facet_wrap(~transformation)</code></pre>
+<p><img src="Lab_4_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>df %&gt;% 
+  ggplot(aes(mpg2, disp)) +
+  geom_point() +
+  facet_wrap(~transformation, scales = &quot;free&quot;)</code></pre>
+<p><img src="Lab_4_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+</div>
+<div id="r-extensions" class="section level3">
+<h3>R extensions</h3>
+<p><a href="http://www.ggplot2-exts.org/gallery/">Here is an R extensions gallery</a></p>
+<pre class="r"><code># install.packages(&quot;devtools&quot;)
+# devtools::install_github(&quot;dgrtwo/gganimate&quot;)
+# devtools::install_github(&quot;dgrtwo/gganimate&quot;)
+install.packages(&#39;ggthemes&#39;, dependencies = TRUE)</code></pre>
+<pre><code>## Installing package into &#39;/home/agricolamz/R/x86_64-pc-linux-gnu-library/3.3&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<pre><code>## also installing the dependencies &#39;lintr&#39;, &#39;pander&#39;, &#39;testthat&#39;</code></pre>
+<pre><code>## Warning in install.packages :
+##   installation of package &#39;pander&#39; had non-zero exit status
+## Warning in install.packages :
+##   installation of package &#39;testthat&#39; had non-zero exit status
+## Warning in install.packages :
+##   installation of package &#39;lintr&#39; had non-zero exit status</code></pre>
+</div>
+<div id="plotly" class="section level3">
+<h3>Plotly</h3>
+<pre class="r"><code>install.packages(&quot;plotly&quot;)</code></pre>
+<pre><code>## Installing package into &#39;/home/agricolamz/R/x86_64-pc-linux-gnu-library/3.3&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+</div>
 
 
 
