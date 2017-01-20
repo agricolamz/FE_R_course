@@ -32,3 +32,17 @@ ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration
 plot(1:40, pch = 1:40)
 ```
 
+```{r}
+plot(chi.kuk$s.duration.ms, chi.kuk$vowel.duration.ms,
+  cex = chi.kuk$age)
+# :( not really cool 
+```
+
+
+```{r}
+chi.kuk %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms, size = age)) +
+  geom_point()
+
+```
+
