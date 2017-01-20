@@ -46,3 +46,10 @@ chi.kuk %>%
 
 ```
 
+```{r}
+chi.kuk %>% 
+  ggplot(aes(s.duration.ms, vowel.duration.ms, color = orientation))+
+  geom_point()+
+  geom_rug()
+```
+

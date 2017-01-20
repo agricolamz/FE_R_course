@@ -269,6 +269,11 @@ ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration
   ggplot(aes(s.duration.ms, vowel.duration.ms, size = age)) +
   geom_point()</code></pre>
 <p><img src="Lab_4_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>chi.kuk %&gt;% 
+  ggplot(aes(s.duration.ms, vowel.duration.ms, color = orientation))+
+  geom_point()+
+  geom_rug()</code></pre>
+<p><img src="Lab_4_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 
 
 
