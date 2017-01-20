@@ -81,3 +81,12 @@ df %>%
   geom_bar(stat = "identity")
 ```
 
+```{r}
+str(mpg)
+```
+```{r}
+mpg %>%
+  ggplot(aes(class, hwy, fill = factor(year)))+
+  geom_boxplot()
+```
+
