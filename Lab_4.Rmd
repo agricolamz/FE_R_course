@@ -53,3 +53,18 @@ chi.kuk %>%
   geom_rug()
 ```
 
+```{r}
+df <- data.frame(names = c(
+  rep("Маша", 50),
+  rep("Саша", 40),
+  rep("Василиса", 10)
+))
+
+df
+```
+```{r}
+df %>% 
+  ggplot(aes(names)) +
+  geom_bar()
+```
+
