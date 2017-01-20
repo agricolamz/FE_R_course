@@ -19,3 +19,9 @@
 * [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_3.html)
 * [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%203.%20working_with_strings.pdf) (покрывает только часть лекции)
 * [домашнее задание](https://goo.gl/forms/nLIv1oBHNoKrvCZh1)
+
+### Занятие 4. Визуализация. Пакет ggplot2. RMarkdown. RNotebook
+
+* [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_4.html)
+* [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%204.%20data_visualization.pdf) (покрывает только часть лекции)
+* домашнее задание
