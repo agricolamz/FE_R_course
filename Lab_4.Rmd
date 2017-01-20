@@ -86,7 +86,11 @@ str(mpg)
 ```
 ```{r}
 mpg %>%
-  ggplot(aes(class, hwy, fill = factor(year)))+
-  geom_boxplot()
+  ggplot(aes(class, hwy, 
+             fill = factor(year)))+
+  geom_violin()+
+  labs(title = "Скоро домой",
+       subtitle = "Грачи улетели, метро еще ходит",
+       caption = "данные взяты из головы")
 ```
 
