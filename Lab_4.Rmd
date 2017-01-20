@@ -28,4 +28,7 @@ ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration
   geom_point()
 
 ```
+```{r}
+plot(1:40, pch = 1:40)
+```
 
