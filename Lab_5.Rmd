@@ -15,7 +15,7 @@ install.packages('ggthemes', dependencies = TRUE)
 ```
 
 ## Plotly
-```{r}
+```{r, eval=F}
 install.packages("plotly")
 ```
 

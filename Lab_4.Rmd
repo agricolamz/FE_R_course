@@ -29,7 +29,7 @@ ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration
 
 ```
 ```{r}
-plot(1:40, pch = 1:40)
+plot(1:25, pch = 1:25)
 ```
 
 ```{r}
@@ -92,6 +92,8 @@ mpg %>%
   labs(title = "Гончарное дело",
        subtitle = "Грачи улетели, метро еще ходит",
        caption = "данные взяты из головы")+  theme_bw()
-pie
+```
+```{r, eval = FALSE}
+?pie
 ```
 

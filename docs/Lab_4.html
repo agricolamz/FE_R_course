@@ -231,16 +231,8 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## Loading tidyverse: ggplot2
-## Loading tidyverse: tibble
-## Loading tidyverse: tidyr
-## Loading tidyverse: readr
-## Loading tidyverse: purrr</code></pre>
-<pre><code>## Conflicts with tidy packages ----------------------------------------------</code></pre>
-<pre><code>## filter(): dplyr, stats
-## lag():    dplyr, stats</code></pre>
-<pre class="r"><code>chi.kuk &lt;- read.csv(&quot;http://goo.gl/Zjr9aF&quot;)
+<pre class="r"><code>library(tidyverse)
+chi.kuk &lt;- read.csv(&quot;http://goo.gl/Zjr9aF&quot;)
 ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration.ms)) +
   geom_smooth() +
   geom_point()</code></pre>
@@ -261,13 +253,7 @@ ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration
   geom_point()</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39;</code></pre>
 <p><img src="Lab_4_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<pre class="r"><code>plot(1:40, pch = 1:40)</code></pre>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;26&#39;</code></pre>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;27&#39;</code></pre>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;28&#39;</code></pre>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;29&#39;</code></pre>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;30&#39;</code></pre>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;31&#39;</code></pre>
+<pre class="r"><code>plot(1:25, pch = 1:25)</code></pre>
 <p><img src="Lab_4_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <pre class="r"><code>plot(chi.kuk$s.duration.ms, chi.kuk$vowel.duration.ms,
   cex = chi.kuk$age)</code></pre>
@@ -427,67 +413,7 @@ df</code></pre>
        subtitle = &quot;Грачи улетели, метро еще ходит&quot;,
        caption = &quot;данные взяты из головы&quot;)+  theme_bw()</code></pre>
 <p><img src="Lab_4_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<pre class="r"><code>pie</code></pre>
-<pre><code>## function (x, labels = names(x), edges = 200, radius = 0.8, clockwise = FALSE, 
-##     init.angle = if (clockwise) 90 else 0, density = NULL, angle = 45, 
-##     col = NULL, border = NULL, lty = NULL, main = NULL, ...) 
-## {
-##     if (!is.numeric(x) || any(is.na(x) | x &lt; 0)) 
-##         stop(&quot;&#39;x&#39; values must be positive.&quot;)
-##     if (is.null(labels)) 
-##         labels &lt;- as.character(seq_along(x))
-##     else labels &lt;- as.graphicsAnnot(labels)
-##     x &lt;- c(0, cumsum(x)/sum(x))
-##     dx &lt;- diff(x)
-##     nx &lt;- length(dx)
-##     plot.new()
-##     pin &lt;- par(&quot;pin&quot;)
-##     xlim &lt;- ylim &lt;- c(-1, 1)
-##     if (pin[1L] &gt; pin[2L]) 
-##         xlim &lt;- (pin[1L]/pin[2L]) * xlim
-##     else ylim &lt;- (pin[2L]/pin[1L]) * ylim
-##     dev.hold()
-##     on.exit(dev.flush())
-##     plot.window(xlim, ylim, &quot;&quot;, asp = 1)
-##     if (is.null(col)) 
-##         col &lt;- if (is.null(density)) 
-##             c(&quot;white&quot;, &quot;lightblue&quot;, &quot;mistyrose&quot;, &quot;lightcyan&quot;, 
-##                 &quot;lavender&quot;, &quot;cornsilk&quot;)
-##         else par(&quot;fg&quot;)
-##     if (!is.null(col)) 
-##         col &lt;- rep_len(col, nx)
-##     if (!is.null(border)) 
-##         border &lt;- rep_len(border, nx)
-##     if (!is.null(lty)) 
-##         lty &lt;- rep_len(lty, nx)
-##     angle &lt;- rep(angle, nx)
-##     if (!is.null(density)) 
-##         density &lt;- rep_len(density, nx)
-##     twopi &lt;- if (clockwise) 
-##         -2 * pi
-##     else 2 * pi
-##     t2xy &lt;- function(t) {
-##         t2p &lt;- twopi * t + init.angle * pi/180
-##         list(x = radius * cos(t2p), y = radius * sin(t2p))
-##     }
-##     for (i in 1L:nx) {
-##         n &lt;- max(2, floor(edges * dx[i]))
-##         P &lt;- t2xy(seq.int(x[i], x[i + 1], length.out = n))
-##         polygon(c(P$x, 0), c(P$y, 0), density = density[i], angle = angle[i], 
-##             border = border[i], col = col[i], lty = lty[i])
-##         P &lt;- t2xy(mean(x[i + 0:1]))
-##         lab &lt;- as.character(labels[i])
-##         if (!is.na(lab) &amp;&amp; nzchar(lab)) {
-##             lines(c(1, 1.05) * P$x, c(1, 1.05) * P$y)
-##             text(1.1 * P$x, 1.1 * P$y, labels[i], xpd = TRUE, 
-##                 adj = ifelse(P$x &lt; 0, 1, 0), ...)
-##         }
-##     }
-##     title(main = main, ...)
-##     invisible(NULL)
-## }
-## &lt;bytecode: 0x6975be8&gt;
-## &lt;environment: namespace:graphics&gt;</code></pre>
+<pre class="r"><code>?pie</code></pre>
 
 
 
