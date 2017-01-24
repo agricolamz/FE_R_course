@@ -237,6 +237,11 @@ $(document).ready(function () {
 <pre class="r"><code># install.packages(&quot;devtools&quot;)
 # devtools::install_github(&quot;dgrtwo/gganimate&quot;)
 # install.packages(&#39;ggthemes&#39;, dependencies = TRUE)</code></pre>
+<pre class="r"><code>mtcars %&gt;% 
+  mutate(car.name = rownames(mtcars)) %&gt;% 
+  ggplot(aes(mpg, disp, label = car.name, color = factor(cyl)))+
+  geom_label()</code></pre>
+<p><img src="Lab_5_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 
 

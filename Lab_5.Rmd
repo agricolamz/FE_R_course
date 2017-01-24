@@ -9,3 +9,12 @@ title: "Визуализация данных. Пакет ggplot2 и его ра
 # devtools::install_github("dgrtwo/gganimate")
 # install.packages('ggthemes', dependencies = TRUE)
 ```
+
+
+```{r}
+mtcars %>% 
+  mutate(car.name = rownames(mtcars)) %>% 
+  ggplot(aes(mpg, disp, label = car.name, color = factor(cyl)))+
+  geom_label()
+```
+
