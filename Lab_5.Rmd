@@ -21,18 +21,26 @@ mtcars %>%
 
 ## Plotly
 [подробнее см. здесь](https://plot.ly/r/)
-```{r, eval=F}
+```{r}
 # install.packages("plotly")
+library(plotly)
+mtcars %>% 
+  mutate(car.name = rownames(mtcars)) %>% 
+  ggplot(aes(mpg, disp, label = car.name, color = factor(cyl)))+
+  geom_point() ->
+  p
+
+ggplotly(p)
 ```
 
 ## Flex Dashboards
 [подробнее см. здесь](http://rmarkdown.rstudio.com/flexdashboard/)
-```{r, eval = F}
+```{r}
 # install.packages("flexdashboard")
 ```
 
 ## Shiny
 [подробнее см. здесь](http://shiny.rstudio.com/gallery/)
-```{r, eval = F}
+```{r}
 # install.packages("shiny")
 ```
