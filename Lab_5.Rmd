@@ -19,7 +19,7 @@ geom_histogram(data = adyghe2, fill = "lightgrey") +
 geom_histogram()+
 facet_wrap(~vowel, nrow = 2)+
 guides(fill = FALSE) +                              # убирает легенду
-theme_bw()                                         # черно-белая тема
+theme_bw()
 
 ```
 
