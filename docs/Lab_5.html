@@ -231,67 +231,7 @@ $(document).ready(function () {
 </div>
 
 
-<div class="section level2">
-<h2>Фасетизация</h2>
-<pre class="r"><code>chi.kuk &lt;- read.csv(&quot;http://goo.gl/Zjr9aF&quot;)
-adyghe &lt;- read.csv(&quot;https://goo.gl/rYZPIj&quot;, sep = &quot;\t&quot;)
-library(tidyverse)
-str(adyghe)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    840 obs. of  15 variables:
-##  $ vowel          : Factor w/ 7 levels &quot;a&quot;,&quot;e&quot;,&quot;ə&quot;,&quot;je&quot;,..: 5 5 5 5 5 5 5 5 4 4 ...
-##  $ duration       : num  137.3 121.7 138.7 89.3 187.4 ...
-##  $ F1             : num  394 397 393 381 356 ...
-##  $ F2             : num  2376 2330 2414 2302 2476 ...
-##  $ F3             : num  2721 2683 2759 2671 3045 ...
-##  $ alveolar       : Factor w/ 2 levels &quot;&quot;,&quot;alveolar&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ alveolo.palatal: Factor w/ 2 levels &quot;&quot;,&quot;alveolo.palatal&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ dental         : Factor w/ 2 levels &quot;&quot;,&quot;dental&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ labial         : Factor w/ 2 levels &quot;&quot;,&quot;labial&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ laminal.closed : Factor w/ 2 levels &quot;&quot;,&quot;laminal.closed&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ laryngeal      : Factor w/ 2 levels &quot;&quot;,&quot;laryngeal&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ pharyngeal     : Factor w/ 2 levels &quot;&quot;,&quot;pharyngeal&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ uvular         : Factor w/ 2 levels &quot;&quot;,&quot;uvular&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ velar          : Factor w/ 2 levels &quot;&quot;,&quot;velar&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ sentence       : Factor w/ 2 levels &quot;isolate&quot;,&quot;sentence&quot;: 1 1 1 2 1 1 1 2 1 1 ...</code></pre>
-<pre class="r"><code>adyghe2 &lt;- adyghe[,-1]        
-adyghe %&gt;%
-  ggplot(aes(F1, fill = vowel)) -&gt;
-  my_plot
 
-my_plot</code></pre>
-<p><img src="Lab_5_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code>my_plot +
-geom_histogram(data = adyghe2, fill = &quot;lightgrey&quot;) +
-geom_histogram()+
-facet_wrap(~vowel, nrow = 2)+
-guides(fill = FALSE) +                              # убирает легенду
-theme_bw()</code></pre>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Lab_5_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
-</div>
-<div id="ggplot-extensions" class="section level2">
-<h2>ggplot extensions</h2>
-<p><a href="http://www.ggplot2-exts.org/gallery/">ggplot extensions gallery</a></p>
-<pre class="r"><code>install.packages(&quot;devtools&quot;)
-devtools::install_github(&quot;dgrtwo/gganimate&quot;)
-install.packages(&#39;ggthemes&#39;, dependencies = TRUE)</code></pre>
-</div>
-<div id="plotly" class="section level2">
-<h2>Plotly</h2>
-<p><a href="https://plot.ly/r/">подробнее см. здесь</a></p>
-<pre class="r"><code>install.packages(&quot;plotly&quot;)</code></pre>
-</div>
-<div id="flex-dashboards" class="section level2">
-<h2>Flex Dashboards</h2>
-<p><a href="http://rmarkdown.rstudio.com/flexdashboard/">подробнее см. здесь</a></p>
-<pre class="r"><code>install.packages(&quot;flexdashboard&quot;)</code></pre>
-</div>
-<div id="shiny" class="section level2">
-<h2>Shiny</h2>
-<p><a href="http://shiny.rstudio.com/gallery/">подробнее см. здесь</a></p>
-<pre class="r"><code>install.packages(&quot;shiny&quot;)</code></pre>
-</div>
 
 
 
