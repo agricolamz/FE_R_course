@@ -38,6 +38,8 @@ ggplotly(p)
 ```{r}
 # install.packages("flexdashboard")
 ```
+[См. пример с картой](http://web-corpora.net/~agricolamz/maps/South_America/South_America_4_YK_dashboard.html)
+[И код](http://web-corpora.net/~agricolamz/maps/South_America/South_America_4_YK_dashboard.Rmd)
 
 ## Shiny
 [подробнее см. здесь](http://shiny.rstudio.com/gallery/)
