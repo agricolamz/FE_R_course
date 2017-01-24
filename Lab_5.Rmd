@@ -3,11 +3,12 @@ title: "Визуализация данных. Пакет ggplot2 и его ра
 ---
 ## Фасетизация
 ```{r}
-
+chi.kuk <- read.csv("http://goo.gl/Zjr9aF")
+library(tidyverse)
 ```
 
 ## ggplot extensions
-[Here is an ggplot extensions gallery](http://www.ggplot2-exts.org/gallery/)
+[ggplot extensions gallery](http://www.ggplot2-exts.org/gallery/)
 ```{r, eval = F}
 install.packages("devtools")
 devtools::install_github("dgrtwo/gganimate")
@@ -15,18 +16,19 @@ install.packages('ggthemes', dependencies = TRUE)
 ```
 
 ## Plotly
+[подробнее см. здесь](https://plot.ly/r/)
 ```{r, eval=F}
 install.packages("plotly")
 ```
 
 ## Flex Dashboards
-[см. здесь](http://rmarkdown.rstudio.com/flexdashboard/)
+[подробнее см. здесь](http://rmarkdown.rstudio.com/flexdashboard/)
 ```{r, eval = F}
 install.packages("flexdashboard")
 ```
 
 ## Shiny
-[см. здесь](http://shiny.rstudio.com/gallery/)
+[подробнее см. здесь](http://shiny.rstudio.com/gallery/)
 ```{r, eval = F}
 install.packages("shiny")
 ```
