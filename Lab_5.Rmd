@@ -1,3 +1,32 @@
 ---
 title: "Визуализация данных. Пакет ggplot2 и его расширения. Пакет plotly. R Markdown. R Notebook. Shiny"
 ---
+## Фасетизация
+```{r}
+
+```
+
+## ggplot extensions
+[Here is an ggplot extensions gallery](http://www.ggplot2-exts.org/gallery/)
+```{r, eval = F}
+install.packages("devtools")
+devtools::install_github("dgrtwo/gganimate")
+install.packages('ggthemes', dependencies = TRUE)
+```
+
+## Plotly
+```{r}
+install.packages("plotly")
+```
+
+## Flex Dashboards
+[см. здесь](http://rmarkdown.rstudio.com/flexdashboard/)
+```{r, eval = F}
+install.packages("flexdashboard")
+```
+
+## Shiny
+[см. здесь](http://shiny.rstudio.com/gallery/)
+```{r, eval = F}
+install.packages("shiny")
+```

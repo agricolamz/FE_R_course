@@ -89,8 +89,9 @@ mpg %>%
   ggplot(aes(class, hwy, 
              fill = factor(year)))+
   geom_violin()+
-  labs(title = "Скоро домой",
+  labs(title = "Гончарное дело",
        subtitle = "Грачи улетели, метро еще ходит",
        caption = "данные взяты из головы")+  theme_bw()
+pie
 ```
 
