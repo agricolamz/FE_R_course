@@ -234,7 +234,20 @@ $(document).ready(function () {
 <div class="section level2">
 <h2>Фасетизация</h2>
 <pre class="r"><code>chi.kuk &lt;- read.csv(&quot;http://goo.gl/Zjr9aF&quot;)
-library(tidyverse)</code></pre>
+adyghe &lt;- read.csv(&quot;https://goo.gl/rYZPIj&quot;, sep = &quot;\t&quot;)
+library(tidyverse)
+
+adyghe2 &lt;- adyghe[,-1]        
+adyghe %&gt;%
+  ggplot(aes(F1, fill = vowel))+
+  geom_histogram(data = adyghe2, fill = &quot;lightgrey&quot;) +         # adyghe2
+  geom_histogram() +                                   # а поверх adyghe
+  facet_wrap(~vowel, nrow = 2) +
+  guides(fill = FALSE) +                              # убирает легенду
+  theme_bw()                                         # черно-белая тема</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="Lab_5_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 </div>
 <div id="ggplot-extensions" class="section level2">
 <h2>ggplot extensions</h2>
