@@ -6,15 +6,20 @@ title: "Визуализация данных. Пакет ggplot2 и его ра
 chi.kuk <- read.csv("http://goo.gl/Zjr9aF")
 adyghe <- read.csv("https://goo.gl/rYZPIj", sep = "\t")
 library(tidyverse)
-
+str(adyghe)
 adyghe2 <- adyghe[,-1]        
 adyghe %>%
-  ggplot(aes(F1, fill = vowel))+
-  geom_histogram(data = adyghe2, fill = "lightgrey") +         # adyghe2
-  geom_histogram() +                                   # а поверх adyghe
-  facet_wrap(~vowel, nrow = 2) +
-  guides(fill = FALSE) +                              # убирает легенду
-  theme_bw()                                         # черно-белая тема
+  ggplot(aes(F1, fill = vowel)) ->
+  my_plot
+
+my_plot
+
+my_plot +
+geom_histogram(data = adyghe2, fill = "lightgrey") +
+geom_histogram()+
+facet_wrap(~vowel, nrow = 2)+
+guides(fill = FALSE) +                              # убирает легенду
+theme_bw()                                         # черно-белая тема
 
 ```
 
