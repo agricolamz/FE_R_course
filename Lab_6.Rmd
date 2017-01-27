@@ -70,7 +70,7 @@ data %>%
           caption = "данные из базы данных http://ids.clld.org/")
 ```
 
-```{r}
+```{r, echo = FALSE}
 words_df %>%
   select(language, n_char) %>% 
   mutate(n_char = factor(n_char)) %>% 
