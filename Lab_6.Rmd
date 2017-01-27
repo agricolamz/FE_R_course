@@ -1,3 +1,53 @@
 ---
 title: "Повторение"
 ---
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+words <- read_csv("https://goo.gl/a4xNwj")
+words <- c(words$trans_english, words$trans_russian)
+words <-sapply(words, function(x){unlist(strsplit(x, ",| "))[1]})
+```
+```{r, echo = FALSE}
+library(tidyverse)
+words <- read_csv("https://goo.gl/a4xNwj")
+words <- c(words$trans_english, words$trans_russian)
+words <-sapply(words, function(x){unlist(strsplit(x, ",| "))[1]})
+n_char <- nchar(words)
+n_vowels <- sapply(words, function(x){
+sum(grepl("e|u|i|o|a|у|е|ы|а|о|э|я|и|ю|ё",
+     substring(x, 1:nchar(x), 1:nchar(x))))})
+language <- rep(c("eng", "rus"), each = 1310)
+words_df <- data.frame(words, n_char, n_vowels, language)
+rm(words, n_char, n_vowels, language)
+```
+```{r, echo = FALSE}
+words_df %>%
+  select(language, n_char) %>% 
+  mutate(n_char = factor(n_char)) %>% 
+  group_by(n_char, language) %>% 
+  summarise(number = n()) %>% 
+  ggplot(aes(x = n_char,y = number, fill = language))+
+  geom_bar(stat = "identity", position = "dodge")+
+  theme_bw()+
+  labs(title = "Количество символов в русских и английских словах",
+          caption = "данные из базы данных http://ids.clld.org/")
+```
+
+```{r}
+"e|u|i|o|a|у|е|ы|а|о|э|я|и|ю|ё"
+```
+
+```{r,echo=FALSE}
+words_df %>%
+  select(language, n_vowels) %>% 
+  mutate(n_vowels = factor(n_vowels)) %>% 
+  group_by(n_vowels, language) %>% 
+  summarise(number = n()) %>% 
+  ggplot(aes(x = n_vowels,y = number))+
+  geom_bar(stat = "identity", position = "dodge")+
+  theme_bw()+
+  facet_wrap(~language)+
+  labs(title = "Количество гласных в русских и английских словах",
+          caption = "данные из базы данных http://ids.clld.org/")
+```
+
