@@ -11,7 +11,7 @@
 
 
 
-<title>Визуализация данных. Пакет ggplot2 и его расширения. Пакет plotly. R Markdown. R Notebook. Shiny</title>
+<title>Визуализация данных. Пакет ggplot2</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -226,21 +226,13 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Визуализация данных. Пакет ggplot2 и его расширения. Пакет plotly. R Markdown. R Notebook. Shiny</h1>
+<h1 class="title toc-ignore">Визуализация данных. Пакет ggplot2</h1>
 
 </div>
 
 
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## Loading tidyverse: ggplot2
-## Loading tidyverse: tibble
-## Loading tidyverse: tidyr
-## Loading tidyverse: readr
-## Loading tidyverse: purrr</code></pre>
-<pre><code>## Conflicts with tidy packages ----------------------------------------------</code></pre>
-<pre><code>## filter(): dplyr, stats
-## lag():    dplyr, stats</code></pre>
-<pre class="r"><code>chi.kuk &lt;- read.csv(&quot;http://goo.gl/Zjr9aF&quot;)
+<pre class="r"><code>library(tidyverse)
+chi.kuk &lt;- read.csv(&quot;http://goo.gl/Zjr9aF&quot;)
 ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration.ms)) +
   geom_smooth() +
   geom_point()</code></pre>

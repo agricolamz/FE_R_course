@@ -1,5 +1,5 @@
 ---
-title: "Визуализация данных. Пакет ggplot2 и его расширения. Пакет plotly. R Markdown. R Notebook. Shiny"
+title: "Визуализация данных. Пакет ggplot2"
 ---
 
 ```{r}
