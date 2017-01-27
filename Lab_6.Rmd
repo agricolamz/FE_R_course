@@ -7,7 +7,7 @@ words <- read_csv("https://goo.gl/a4xNwj")
 words <- c(words$trans_english, words$trans_russian)
 words <-sapply(words, function(x){unlist(strsplit(x, ",| "))[1]})
 ```
-```{r, echo = FALSE}
+```{r, echo = FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)
 words <- read_csv("https://goo.gl/a4xNwj")
 words <- c(words$trans_english, words$trans_russian)
@@ -60,8 +60,13 @@ words_df %>%
   select(language, n_vowels) %>% 
   mutate(n_vowels = factor(n_vowels)) %>% 
   group_by(n_vowels, language) %>% 
-  summarise(number = n()) %>%
-  ggplot(aes(x = n_vowels,y = number))+
+  summarise(number = n()) ->
+  data
+data2 <- data[,-2]
+
+data %>% 
+  ggplot(aes(x = n_vowels,y = number, fill = language))+
+  geom_bar(data = data2, stat = "identity", fill = "lightgrey")+
   geom_bar(stat = "identity", position = "dodge")+
   theme_bw()+
   facet_wrap(~language)+
