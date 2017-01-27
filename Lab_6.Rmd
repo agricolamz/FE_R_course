@@ -29,6 +29,8 @@ words_df %>%
   ggplot(aes(x = n_char,y = number, fill = language))+
   geom_bar(stat = "identity", position = "dodge")+
   theme_bw()+
+  xlab("количество символов")+
+  ylab("количество слов")+
   labs(title = "Количество символов в русских и английских словах",
           caption = "данные из базы данных http://ids.clld.org/")
 ```
@@ -47,7 +49,22 @@ words_df %>%
   geom_bar(stat = "identity", position = "dodge")+
   theme_bw()+
   facet_wrap(~language)+
-  labs(title = "Количество гласных в русских и английских словах",
+  xlab("количество гласных")+
+  ylab("количество слов")+
+  labs(title = "Количество гласных букв в русских и английских словах",
           caption = "данные из базы данных http://ids.clld.org/")
 ```
 
+```{r,echo=FALSE}
+words_df %>%
+  select(language, n_vowels) %>% 
+  mutate(n_vowels = factor(n_vowels)) %>% 
+  group_by(n_vowels, language) %>% 
+  summarise(number = n()) %>%
+  ggplot(aes(x = n_vowels,y = number))+
+  geom_bar(stat = "identity", position = "dodge")+
+  theme_bw()+
+  facet_wrap(~language)+
+  labs(title = "Количество гласных в русских и английских словах",
+          caption = "данные из базы данных http://ids.clld.org/")
+```
