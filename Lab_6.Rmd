@@ -8,17 +8,13 @@ words <- c(words$trans_english, words$trans_russian)
 words <-sapply(words, function(x){unlist(strsplit(x, ",| "))[1]})
 ```
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
-library(tidyverse)
-words <- read_csv("https://goo.gl/a4xNwj")
-words <- c(words$trans_english, words$trans_russian)
-words <-sapply(words, function(x){unlist(strsplit(x, ",| "))[1]})
 n_char <- nchar(words)
 n_vowels <- sapply(words, function(x){
 sum(grepl("e|u|i|o|a|у|е|ы|а|о|э|я|и|ю|ё",
      substring(x, 1:nchar(x), 1:nchar(x))))})
 language <- rep(c("eng", "rus"), each = 1310)
 words_df <- data.frame(words, n_char, n_vowels, language)
-rm(words, n_char, n_vowels, language)
+rm(n_char, n_vowels, language)
 ```
 ```{r, echo = FALSE}
 words_df %>%
@@ -73,3 +69,22 @@ data %>%
   labs(title = "Количество гласных в русских и английских словах",
           caption = "данные из базы данных http://ids.clld.org/")
 ```
+
+```{r}
+words_df %>%
+  select(language, n_char) %>% 
+  mutate(n_char = factor(n_char)) %>% 
+  group_by(n_char, language) %>% 
+  summarise(number = n()) %>% 
+  spread(language, number) %>% 
+  ggplot(aes(x = eng,y = rus, label = n_char))+
+  geom_text()+
+  theme_bw()+
+  scale_x_log10()+
+  scale_y_log10()+
+  xlab("количество английских слов")+
+  ylab("количество русских слов")+
+  labs(title = "Длинна слова в русском и английском списках",
+          caption = "данные из базы данных http://ids.clld.org/")
+```
+
