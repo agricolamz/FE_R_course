@@ -2,7 +2,7 @@
 title: "Описательная статистика"
 ---
 
-```{r}
+```{r, message=F}
 library(tidyverse)
 words <- read_csv("https://goo.gl/a4xNwj")
 ```
