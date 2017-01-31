@@ -9,6 +9,30 @@ b <- c(-1, -0.5, 0, 0.5, 1)
 table(cut(a, breaks = b))
 ```
 
+## Взвешенное средние
+```{r}
+weighted.mean(x = c(10, 9, 9),
+              w = c(0.6, 0.2, 0.2))
+```
+
+## SD
+```{r}
+set.seed(42)
+a <- runif(40)
+mean(a)
+plot(a)
+abline(h = mean(a))
+```
+```{r}
+a - mean(a)
+(a - mean(a))^2
+sum((a - mean(a))^2)/length(a) # средние
+(sum((a - mean(a))^2)/length(a))^(1/2)
+(sum((a - mean(a))^2)/(length(a)-1))^(1/2)
+sd(a) == (sum((a - mean(a))^2)/(length(a)-1))^(1/2)
+```
+
+
 
 ```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
