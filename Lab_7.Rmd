@@ -2,3 +2,9 @@
 title: "Описательная статистика"
 ---
 
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+words <- read_csv("https://goo.gl/a4xNwj")
+words <- c(words$trans_english, words$trans_russian)
+words <-sapply(words, function(x){unlist(strsplit(x, ",| "))[1]})
+```

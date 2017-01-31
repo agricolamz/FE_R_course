@@ -231,7 +231,10 @@ $(document).ready(function () {
 </div>
 
 
-
+<pre class="r"><code>library(tidyverse)
+words &lt;- read_csv(&quot;https://goo.gl/a4xNwj&quot;)
+words &lt;- c(words$trans_english, words$trans_russian)
+words &lt;-sapply(words, function(x){unlist(strsplit(x, &quot;,| &quot;))[1]})</code></pre>
 
 
 
