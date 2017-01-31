@@ -325,7 +325,11 @@ table(v)</code></pre>
 <pre class="r"><code>library(tidyverse)
 words &lt;- read_csv(&quot;https://goo.gl/a4xNwj&quot;)
 words &lt;- c(words$trans_english, words$trans_russian)
-words &lt;-sapply(words, function(x){unlist(strsplit(x, &quot;,| &quot;))[1]})</code></pre>
+words &lt;-sapply(words, function(x){unlist(strsplit(x, &quot;,| &quot;))[1]})
+words &lt;- data.frame(words = words, stringsAsFactors = F)
+str(words)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    2620 obs. of  1 variable:
+##  $ words: chr  &quot;often&quot; &quot;always&quot; &quot;ready&quot; &quot;cease&quot; ...</code></pre>
 </div>
 </div>
 
