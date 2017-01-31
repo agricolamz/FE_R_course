@@ -2,8 +2,3 @@
 title: "Описательная статистика"
 ---
 
-```{r, message=F}
-library(tidyverse)
-words <- read_csv("https://goo.gl/a4xNwj")
-```
-
