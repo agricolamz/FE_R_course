@@ -343,6 +343,16 @@ str(words)</code></pre>
 ##  $ words   : Factor w/ 2466 levels &quot;account&quot;,&quot;accuse&quot;,..: 731 17 843 171 382 337 589 79 856 489 ...
 ##  $ n_char  : int  5 6 5 5 6 3 4 5 6 6 ...
 ##  $ language: chr  &quot;eng&quot; &quot;eng&quot; &quot;eng&quot; &quot;eng&quot; ...</code></pre>
+<pre class="r"><code>words %&gt;%
+  group_by(language) %&gt;%
+  summarise(my.mean = mean(n_char),
+            my.min = mean(n_char)- sd(n_char),
+            my.max = mean(n_char)+ sd(n_char))</code></pre>
+<pre><code>## # A tibble: 2 × 4
+##   language  my.mean   my.min   my.max
+##      &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1      eng 5.304580 3.309653 7.299507
+## 2      rus 6.291603 4.095940 8.487266</code></pre>
 </div>
 </div>
 
