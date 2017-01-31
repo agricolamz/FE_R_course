@@ -2,6 +2,14 @@
 title: "Описательная статистика"
 ---
 
+## Делим на группы непрерывную переменную
+```{r}
+a <- sin(1:100)
+b <- c(-1, -0.5, 0, 0.5, 1)
+table(cut(a, breaks = b))
+```
+
+
 ```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
 words <- read_csv("https://goo.gl/a4xNwj")
