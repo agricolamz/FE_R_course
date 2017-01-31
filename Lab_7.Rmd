@@ -32,6 +32,26 @@ sum((a - mean(a))^2)/length(a) # средние
 sd(a) == (sum((a - mean(a))^2)/(length(a)-1))^(1/2)
 ```
 
+## Квантиль
+```{r}
+quantile(a, 0.4)
+```
+
+### Таблицы сопряженности
+```{r}
+v <- c('m', 'f', 'm', 'm', 'f', 'f', 'f', 'f')
+df <- data.frame(sex = c('m', 'f', 'm', 'm', 'f', 'f', 'f', 'f'),
+hand = c('lf', 'rh', 'rh', 'rh', 'rh', 'lf', 'am', 'rh'))
+table(v)
+table(df)
+prop.table(table(v))
+prop.table(c(1, 2))
+prop.table(table(df))
+
+prop.table(table(df))*100
+
+round(prop.table(table(df))*100)
+```
 
 
 ```{r, warning=FALSE, message=FALSE}
