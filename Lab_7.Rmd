@@ -1,3 +1,9 @@
 ---
 title: "Описательная статистика"
 ---
+
+```{r}
+library(tidyverse)
+words <- read_csv("https://goo.gl/a4xNwj")
+```
+
