@@ -63,4 +63,7 @@ words <- data.frame(words = words)
 str(words)
 words$n_char <- nchar(as.character(words$words))
 str(words)
+nrow(words)
+words$language <- rep(c("eng", "rus"), each = 1310)
+str(words)
 ```
