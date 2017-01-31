@@ -351,7 +351,11 @@ str(words)</code></pre>
   ggplot(aes(x = language, y = my.mean, fill = language))+
   geom_bar(stat = &quot;identity&quot;)+
   theme_bw()+
-  geom_errorbar(aes(ymin = my.min, ymax = my.max))</code></pre>
+  geom_errorbar(aes(ymin = my.min, ymax = my.max), width = 0.2, color = &quot;green&quot;)+
+  xlab(&quot;языки&quot;)+
+  ylab(&quot;количество символов в слове&quot;)+
+  labs(title = &quot;Это невероятно интересный график&quot;)+
+  guides(fill=FALSE)</code></pre>
 <p><img src="Lab_7_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 </div>
