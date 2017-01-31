@@ -347,12 +347,12 @@ str(words)</code></pre>
   group_by(language) %&gt;%
   summarise(my.mean = mean(n_char),
             my.min = mean(n_char)- sd(n_char),
-            my.max = mean(n_char)+ sd(n_char))</code></pre>
-<pre><code>## # A tibble: 2 × 4
-##   language  my.mean   my.min   my.max
-##      &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-## 1      eng 5.304580 3.309653 7.299507
-## 2      rus 6.291603 4.095940 8.487266</code></pre>
+            my.max = mean(n_char)+ sd(n_char)) %&gt;% 
+  ggplot(aes(x = language, y = my.mean, fill = language))+
+  geom_bar(stat = &quot;identity&quot;)+
+  theme_bw()+
+  geom_errorbar(aes(ymin = my.min, ymax = my.max))</code></pre>
+<p><img src="Lab_7_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 </div>
 
