@@ -70,14 +70,14 @@ str(words)
 words %>%
   group_by(language) %>%
   summarise(my.mean = mean(n_char),
-            my.min = mean(n_char)- sd(n_char),
-            my.max = mean(n_char)+ sd(n_char)) %>% 
+            my.min = mean(n_char) - sd(n_char),
+            my.max = mean(n_char) + sd(n_char)) %>% 
   ggplot(aes(x = language, y = my.mean, fill = language))+
   geom_bar(stat = "identity")+
   theme_bw()+
   geom_errorbar(aes(ymin = my.min, ymax = my.max), width = 0.2, color = "green")+
   xlab("языки")+
   ylab("количество символов в слове")+
-  labs(title = "Это невероятно интересный график")+
+  labs(title = "Это невероятно интересный график")+ 
   guides(fill=FALSE)
 ```

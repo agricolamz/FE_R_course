@@ -5,7 +5,7 @@
 <head>
 
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="5"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
 
@@ -231,8 +231,16 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>library(tidyverse)
-chi.kuk &lt;- read.csv(&quot;http://goo.gl/Zjr9aF&quot;)
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## Loading tidyverse: ggplot2
+## Loading tidyverse: tibble
+## Loading tidyverse: tidyr
+## Loading tidyverse: readr
+## Loading tidyverse: purrr</code></pre>
+<pre><code>## Conflicts with tidy packages ----------------------------------------------</code></pre>
+<pre><code>## filter(): dplyr, stats
+## lag():    dplyr, stats</code></pre>
+<pre class="r"><code>chi.kuk &lt;- read.csv(&quot;http://goo.gl/Zjr9aF&quot;)
 ggplot(data = chi.kuk, aes(x = chi.kuk$s.duration.ms, y = chi.kuk$vowel.duration.ms)) +
   geom_smooth() +
   geom_point()</code></pre>
