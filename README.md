@@ -32,4 +32,10 @@
 
 ### Занятие 6. Повторение.
 
-* [задания]()
+* [задания](https://agricolamz.github.io/FE_R_course/Lab_6.html)
+
+### Занятия 7-8. Описантельная статистика. Фриквентистская статистика
+
+* [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_7.html)
+* [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%207.%20descriptive_and_simple_statistics.pdf) (покрывает только часть лекции)
+* [домашнее задание](https://goo.gl/forms/BFgKk2EgXdQaUMi83)
