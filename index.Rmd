@@ -41,3 +41,9 @@ title: "Курс 'R, визуализация и статистика'"
 * [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_7.html)
 * [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%207.%20descriptive_and_simple_statistics.pdf) (покрывает только часть лекции)
 * [домашнее задание](https://goo.gl/forms/BFgKk2EgXdQaUMi83)
+
+### Занятие 9. Корреляция и регрессия
+
+* [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_9.html)
+* [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%208.%20Correlation_and_regression.pdf)
+* домашнее задание
