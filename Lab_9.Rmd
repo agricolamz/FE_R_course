@@ -5,6 +5,40 @@ title: "Корреляция и регрессия"
 ```{r}
 # install.packages("tidyverse")
 library(tidyverse)
+```
+
+### Correlation
+```{r}
+library(tidyverse)
+cor(mtcars$mpg,mtcars$qsec)
+a <- cor.test(mtcars$mpg,mtcars$qsec)
+a$conf.int
+
+mtcars %>% 
+  cor()
+
+
+df <- data.frame(y = runif(20, 20, 100))
+df %>% 
+  mutate(x = y^2) %>%
+  cor(method = "p")
+
+df %>% 
+  mutate(x = y^2) %>%
+  ggplot(aes(x, y)) +
+  geom_point()
+
+```
+
+```{r}
+number = 
 dat <- read.csv("https://goo.gl/5bp7hH")
+dat %>% 
+  group_by(s.deletion) %>% 
+  summarize(number = n())
+
+dat %>% 
+  group_by(s.deletion, gramm.cat, phon.cont) %>% 
+  summarize(number = n())
 ```
 
