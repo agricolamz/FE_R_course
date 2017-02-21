@@ -1,3 +1,10 @@
 ---
-title: "Разные подходы к статистике. Фриквентистская статистика"
+title: "Корреляция и регрессия"
 ---
+
+```{r}
+# install.packages("tidyverse")
+library(tidyverse)
+dat <- read.csv("https://goo.gl/5bp7hH")
+```
+
