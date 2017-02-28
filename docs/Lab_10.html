@@ -231,7 +231,33 @@ $(document).ready(function () {
 </div>
 
 
-
+<div id="---lob-bre" class="section level4">
+<h4>1. Информация о корпусе LOB (BrE)</h4>
+<p>В датасет (<a href="https://goo.gl/pY55GP" class="uri">https://goo.gl/pY55GP</a>) собрана информация о корпусе британского английского:</p>
+<ul>
+<li>to Token count</li>
+<li>ty Type count (distinct words)</li>
+<li>se Sentence count</li>
+<li>towl Average word length (averaged across tokens in document)</li>
+<li>tywl Average word length (averaged across distinct types in document)</li>
+</ul>
+<p>1.1 Как скоррелированы средняя длина слов (towl) и количество токенов (to)? Найдите коэффициент корреляции и доверительный интервал для него.</p>
+<p>1.2 Постройте регрессионную модель зависимости средней длины слов (towl) от количества токенов (to). Напишите математическую формулу получившейся модели и Adjusted R-squared.</p>
+</div>
+<div id="----" class="section level4">
+<h4>2. Данные для моделирования гендерных различий</h4>
+<p>В датасет (<a href="https://goo.gl/Gj4Ynb" class="uri">https://goo.gl/Gj4Ynb</a>) записаны данные из британского национального корпуса. На основании всех параметров постройте линейную регрессию, предсказывающую среднее значение длины слова, и выберите оптимальную модель (используйте аргумент “both”).</p>
+<p>2.1 Найдите AIC получившейся модели.</p>
+<p>2.2 Какие два предиктора получившийся модели имеют наименьший коэффициент корреляции? Предполагается, что будут взяты коэффициенты из получившийся модели и скормлены функции cor() в виде датафрейма. Не забудьте выкинуть категориальную переменную author_sex. Если Вы используете dplyr, то преобразование из матрицы в датафрейм можно сделать командой: … cor() %&gt;% data.frame(., row.names(.)) %&gt;% …</p>
+</div>
+<div id="----2009" class="section level4">
+<h4>3. Частотный словарь [Ляшевская, Шаров 2009]</h4>
+<p>3.1 Смотрите, какой красивый график!</p>
+<pre class="r"><code>library(tidyverse)
+freq.dict &lt;- read.csv(&quot;http://goo.gl/aUNwr6&quot;, sep=&#39;\t&#39;)</code></pre>
+<p><img src="Lab_10_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>3.2 Назовите интерсепт, коэффициенты регрессионной модели <code>log(Freq.ipm.) ~ log(Doc)</code>, а также значение Adjusted R-squared.</p>
+</div>
 
 
 
