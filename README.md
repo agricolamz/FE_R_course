@@ -39,3 +39,14 @@
 * [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_7.html)
 * [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%207.%20descriptive_and_simple_statistics.pdf) (покрывает только часть лекции)
 * [домашнее задание](https://goo.gl/forms/BFgKk2EgXdQaUMi83)
+
+### Занятие 9. Корреляция и регрессия
+
+* [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_9.html)
+* [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%209.%20Correlation_and_regression.pdf)
+
+### Занятие 10. Повторение и логистическая регрессия
+
+* [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_10.html)
+* [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%2010.%20Logistic_regression.pdf)
+* домашнее задание
