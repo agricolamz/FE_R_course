@@ -50,3 +50,8 @@
 * [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_10.html)
 * [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%2010.%20Logistic_regression.pdf)
 * домашнее задание
+
+### Занятие 11. Кластеризация и деревья решений
+
+* [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%2011.%20Clustering,_decision_trees.pdf)
+* [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_11.html)
