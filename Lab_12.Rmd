@@ -1,5 +1,5 @@
 ---
-  title: "Работа с веб-страницами. Обработка текста. Пакет rvest. Пакет tidytext"
+title: "Работа с веб-страницами. Обработка текста. Пакет rvest. Пакет tidytext"
 ---
 
 ```{r setup, include=FALSE}
@@ -16,6 +16,7 @@ install.packages("tidytext")
 ```{r}
 library(rvest)
 library(tidytext)
+library(tidyverse)
 ```
 
 ### CSS-селекторы
@@ -35,7 +36,7 @@ source <- read_html("https://ling.hse.ru/news/")
 * потом пройтись функциями `rvest`
 ```{r}
 source %>% 
-  html_nodes("div.post:nth-child(1) > div:nth-child(2) > h2:nth-child(1) > a:nth-child(1)") %>%
+  html_nodes("div.post:nth-child(2) > div:nth-child(2) > h2:nth-child(1)") %>%
   html_text() -> 
   titles
 titles
@@ -45,7 +46,7 @@ titles
 
 ```{r}
 source %>% 
-  html_nodes("a.link.link_dark2.no-visited") %>%
+  html_nodes("h2") %>%
   html_text() -> 
   titles
 titles
@@ -92,9 +93,17 @@ texts <- sapply(links, function(x){
   })
 ```
 
-* создайте датафрейм с двумя переменными `name` и `text`, со списком авторов и текстами о них
+* создайте тиббл (`data_frame`) с двумя переменными `name` и `text`, со списком авторов и текстами о них
 ```{r}
-nobel_laureates <- data.frame(eng_list, texts)
+nobel_laureates <- data_frame(eng_list, texts)
 str(nobel_laureates)
+```
+
+### Tidytext
+```{r}
+nobel_laureates %>%
+  unnest_tokens(word, texts) ->
+  nobel_laureates
+head(nobel_laureates)
 ```
 

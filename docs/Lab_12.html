@@ -237,7 +237,8 @@ $(document).ready(function () {
 <pre class="r"><code>install.packages(&quot;rvest&quot;)
 install.packages(&quot;tidytext&quot;)</code></pre>
 <pre class="r"><code>library(rvest)
-library(tidytext)</code></pre>
+library(tidytext)
+library(tidyverse)</code></pre>
 </div>
 <div id="css-" class="section level3">
 <h3>CSS-селекторы</h3>
@@ -258,40 +259,29 @@ library(tidytext)</code></pre>
 <li>потом пройтись функциями <code>rvest</code></li>
 </ul>
 <pre class="r"><code>source %&gt;% 
-  html_nodes(&quot;div.post:nth-child(1) &gt; div:nth-child(2) &gt; h2:nth-child(1) &gt; a:nth-child(1)&quot;) %&gt;%
+  html_nodes(&quot;div.post:nth-child(2) &gt; div:nth-child(2) &gt; h2:nth-child(1)&quot;) %&gt;%
   html_text() -&gt; 
   titles
 titles</code></pre>
-<pre><code>## [1] &quot;«Голый кондуктор бежит под трамваем»&quot;</code></pre>
+<pre><code>## [1] &quot;При участии школы лингвистики вышла новая версия Universal Dependencies&quot;</code></pre>
 <ul>
 <li>посмотреть внимательнее и пройтись функциями <code>rvest</code></li>
 </ul>
 <pre class="r"><code>source %&gt;% 
-  html_nodes(&quot;a.link.link_dark2.no-visited&quot;) %&gt;%
+  html_nodes(&quot;h2&quot;) %&gt;%
   html_text() -&gt; 
   titles
 titles</code></pre>
-<pre><code>##  [1] &quot;О школе&quot;                                                                            
-##  [2] &quot;Сотрудники&quot;                                                                         
-##  [3] &quot;Научная деятельность&quot;                                                               
-##  [4] &quot;Ресурсы&quot;                                                                            
-##  [5] &quot;Препринты&quot;                                                                          
-##  [6] &quot;Бакалаврская программа «Фундаментальная и компьютерная лингвистика»&quot;                
-##  [7] &quot;Магистерская программа «Компьютерная лингвистика»&quot;                                  
-##  [8] &quot;Магистерская программа «Лингвистическая теория и описание языка»&quot;                   
-##  [9] &quot;Магистерская программа «Русский как иностранный во взаимодействии языков и культур»&quot;
-## [10] &quot;Аспирантская школа по филологическим наукам&quot;                                        
-## [11] &quot;Публикации&quot;                                                                         
-## [12] &quot;«Голый кондуктор бежит под трамваем»&quot;                                               
-## [13] &quot;При участии школы лингвистики вышла новая версия Universal Dependencies&quot;            
-## [14] &quot;В школе лингвистики прошел воркшоп по «бесермяноведению и черемистике»&quot;             
-## [15] &quot;«Я рассматриваю македонский язык как ключ к Балканам»&quot;                              
-## [16] &quot;Цифровые методы от Платона до Тарантино&quot;                                            
-## [17] &quot;«Нет, мы не готовим переводчиков... зато лингвисты работают в Google»&quot;              
-## [18] &quot;«Неунылый» комментарий к «Холодному лету» Мандельштама&quot;                             
-## [19] &quot;Жизнь минус любовь = прозябание, или обновлённый RusVectōrēs&quot;                       
-## [20] &quot;«Не ожидала, что обучение русскому языку через игры может кого-то удивить»&quot;         
-## [21] &quot;«Здесь каждый камушек пропитан студенчеством»&quot;</code></pre>
+<pre><code>##  [1] &quot;«Голый кондуктор бежит под трамваем»&quot;                                      
+##  [2] &quot;При участии школы лингвистики вышла новая версия Universal Dependencies&quot;   
+##  [3] &quot;В школе лингвистики прошел воркшоп по «бесермяноведению и черемистике»&quot;    
+##  [4] &quot;«Я рассматриваю македонский язык как ключ к Балканам»&quot;                     
+##  [5] &quot;Цифровые методы от Платона до Тарантино&quot;                                   
+##  [6] &quot;«Нет, мы не готовим переводчиков... зато лингвисты работают в Google»&quot;     
+##  [7] &quot;«Неунылый» комментарий к «Холодному лету» Мандельштама&quot;                    
+##  [8] &quot;Жизнь минус любовь = прозябание, или обновлённый RusVectōrēs&quot;              
+##  [9] &quot;«Не ожидала, что обучение русскому языку через игры может кого-то удивить»&quot;
+## [10] &quot;«Здесь каждый камушек пропитан студенчеством»&quot;</code></pre>
 <p>Давайте сделаем аналогичное для текстов</p>
 <pre class="r"><code>source %&gt;% 
   html_nodes(&quot;div.post__text&quot;) %&gt;%
@@ -324,13 +314,29 @@ head(texts)</code></pre>
 ## [6] &quot;https://en.wikipedia.org/wiki/W._B._Yeats&quot;</code></pre>
 <ul>
 <li><p>Скачайте тексты всех статей</p></li>
-<li><p>создайте датафрейм с двумя переменными <code>name</code> и <code>text</code>, со списком авторов и текстами о них</p></li>
+<li><p>создайте тиббл (<code>data_frame</code>) с двумя переменными <code>name</code> и <code>text</code>, со списком авторов и текстами о них</p></li>
 </ul>
-<pre class="r"><code>nobel_laureates &lt;- data.frame(eng_list, texts)
+<pre class="r"><code>nobel_laureates &lt;- data_frame(eng_list, texts)
 str(nobel_laureates)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    113 obs. of  2 variables:
-##  $ eng_list: Factor w/ 113 levels &quot;Albert Camus&quot;,..: 93 104 97 48 67 89 90 49 40 7 ...
-##  $ texts   : Factor w/ 113 levels &quot;Akinwande Oluwole \&quot;Wole\&quot; Babatunde Soyinka (Yoruba: Akinwándé Oluwo̩lé Babátúndé S̩óyinká, pronounced [wɔlé ʃójĩŋká]; born 13 J&quot;| __truncated__,..: 101 110 106 55 75 97 98 56 47 8 ...</code></pre>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    113 obs. of  2 variables:
+##  $ eng_list: chr  &quot;Shmuel Yosef Agnon&quot; &quot;Vicente Aleixandre&quot; &quot;Svetlana Alexievich&quot; &quot;Ivo Andrić&quot; ...
+##  $ texts   : chr  &quot;Shmuel Yosef Agnon (Hebrew: שמואל יוסף עגנון‎‎) (July 17, 1888 – February 17, 1970)[1] was a Nobel Prize laureate writer and was &quot;| __truncated__ &quot;Vicente Pío Marcelino Cirilo Aleixandre y Merlo (26 April 1898 – 14 December 1984) was a Spanish poet who was born in Seville i&quot;| __truncated__ &quot;Svetlana Alexandrovna Alexievich[1] (born 31 May 1948 in Stanislaviv, Ukrainian SSR) is a Belarusian investigative journalist a&quot;| __truncated__ &quot;Ivo Andrić (Serbian Cyrillic: Иво Андрић, pronounced [ǐːʋɔ ǎːndritɕ]; born Ivan Andrić; 9 October 1892 – 13 March 1975) was a Y&quot;| __truncated__ ...</code></pre>
+</div>
+<div id="tidytext" class="section level3">
+<h3>Tidytext</h3>
+<pre class="r"><code>nobel_laureates %&gt;%
+  unnest_tokens(word, texts) -&gt;
+  nobel_laureates
+head(nobel_laureates)</code></pre>
+<pre><code>## # A tibble: 6 × 2
+##             eng_list   word
+##                &lt;chr&gt;  &lt;chr&gt;
+## 1 Shmuel Yosef Agnon shmuel
+## 2 Shmuel Yosef Agnon  yosef
+## 3 Shmuel Yosef Agnon  agnon
+## 4 Shmuel Yosef Agnon hebrew
+## 5 Shmuel Yosef Agnon  שמואל
+## 6 Shmuel Yosef Agnon   יוסף</code></pre>
 </div>
 
 
