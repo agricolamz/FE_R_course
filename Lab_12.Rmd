@@ -1,3 +1,100 @@
 ---
   title: "Работа с веб-страницами. Обработка текста. Пакет rvest. Пакет tidytext"
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE)
+```
+
+### Библиотеки
+Сегодня нам понадобятся библиотеки:
+```{r, eval = FALSE}
+install.packages("rvest")
+install.packages("tidytext")
+```
+
+```{r}
+library(rvest)
+library(tidytext)
+```
+
+### CSS-селекторы
+Можно долго и нудно бороться с тегами скаченной веб-страницы, однако можно использовать CSS-селекторы.
+
+* [список css-селекторов](https://www.w3schools.com/cssref/css_selectors.asp)
+* [сss-тестер](https://www.w3schools.com/cssref/trysel.asp)
+
+### Краулер
+
+* во-первых нужно ввести ссылку
+```{r}
+source <- read_html("https://ling.hse.ru/news/")
+```
+
+* потом нужно узнать CSS-селектор
+* потом пройтись функциями `rvest`
+```{r}
+source %>% 
+  html_nodes("div.post:nth-child(1) > div:nth-child(2) > h2:nth-child(1) > a:nth-child(1)") %>%
+  html_text() -> 
+  titles
+titles
+```
+
+* посмотреть внимательнее и пройтись функциями `rvest`
+
+```{r}
+source %>% 
+  html_nodes("a.link.link_dark2.no-visited") %>%
+  html_text() -> 
+  titles
+titles
+```
+
+Давайте сделаем аналогичное для текстов
+```{r}
+source %>% 
+  html_nodes("div.post__text") %>%
+  html_text() ->
+  texts
+head(texts)
+```
+
+### Задание
+Скачайте список нобелевских лауреатов по литературе.
+
+* [английский список](https://en.wikipedia.org/wiki/Category:Nobel_laureates_in_Literature) (вот первые 6)
+
+```{r, echo = FALSE}
+eng_list_link <- read_html("https://en.wikipedia.org/wiki/Category:Nobel_laureates_in_Literature")
+
+eng_list_link %>% 
+  html_nodes("li") %>%
+  html_text() ->
+  eng_list
+eng_list <- eng_list[2:114]
+head(eng_list)
+```
+
+* создайте вектор ссылок на каждого автора (вот последние 6)
+```{r, echo = FALSE}
+links <- paste0("https://en.wikipedia.org/wiki/", gsub(" ", "_", eng_list))
+tail(links)
+```
+
+* Скачайте тексты всех статей
+```{r, echo = FALSE, cache= TRUE}
+texts <- sapply(links, function(x){
+  read_html(x) %>% 
+    html_nodes("p") %>%
+    html_text() %>% 
+    paste(., collapse = " ")
+  })
+```
+
+* создайте датафрейм с двумя переменными `name` и `text`, со списком авторов и текстами о них
+```{r}
+nobel_laureates <- data.frame(eng_list, texts)
+str(nobel_laureates)
+```
+
