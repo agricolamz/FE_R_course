@@ -316,20 +316,21 @@ head(texts)</code></pre>
 <li><p>Скачайте тексты всех статей</p></li>
 <li><p>создайте тиббл (<code>data_frame</code>) с двумя переменными <code>name</code> и <code>text</code>, со списком авторов и текстами о них</p></li>
 </ul>
-<pre class="r"><code>nobel_laureates &lt;- data_frame(eng_list, texts)
+<pre class="r"><code>nobel_laureates &lt;- data_frame(name = eng_list, texts)
 str(nobel_laureates)</code></pre>
 <pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    113 obs. of  2 variables:
-##  $ eng_list: chr  &quot;Shmuel Yosef Agnon&quot; &quot;Vicente Aleixandre&quot; &quot;Svetlana Alexievich&quot; &quot;Ivo Andrić&quot; ...
-##  $ texts   : chr  &quot;Shmuel Yosef Agnon (Hebrew: שמואל יוסף עגנון‎‎) (July 17, 1888 – February 17, 1970)[1] was a Nobel Prize laureate writer and was &quot;| __truncated__ &quot;Vicente Pío Marcelino Cirilo Aleixandre y Merlo (26 April 1898 – 14 December 1984) was a Spanish poet who was born in Seville i&quot;| __truncated__ &quot;Svetlana Alexandrovna Alexievich[1] (born 31 May 1948 in Stanislaviv, Ukrainian SSR) is a Belarusian investigative journalist a&quot;| __truncated__ &quot;Ivo Andrić (Serbian Cyrillic: Иво Андрић, pronounced [ǐːʋɔ ǎːndritɕ]; born Ivan Andrić; 9 October 1892 – 13 March 1975) was a Y&quot;| __truncated__ ...</code></pre>
+##  $ name : chr  &quot;Shmuel Yosef Agnon&quot; &quot;Vicente Aleixandre&quot; &quot;Svetlana Alexievich&quot; &quot;Ivo Andrić&quot; ...
+##  $ texts: chr  &quot;Shmuel Yosef Agnon (Hebrew: שמואל יוסף עגנון‎‎) (July 17, 1888 – February 17, 1970)[1] was a Nobel Prize laureate writer and was &quot;| __truncated__ &quot;Vicente Pío Marcelino Cirilo Aleixandre y Merlo (26 April 1898 – 14 December 1984) was a Spanish poet who was born in Seville i&quot;| __truncated__ &quot;Svetlana Alexandrovna Alexievich[1] (born 31 May 1948 in Stanislaviv, Ukrainian SSR) is a Belarusian investigative journalist a&quot;| __truncated__ &quot;Ivo Andrić (Serbian Cyrillic: Иво Андрић, pronounced [ǐːʋɔ ǎːndritɕ]; born Ivan Andrić; 9 October 1892 – 13 March 1975) was a Y&quot;| __truncated__ ...</code></pre>
 </div>
 <div id="tidytext" class="section level3">
 <h3>Tidytext</h3>
+<p><code>unnest_tokens</code> делает из строк Tidy text!</p>
 <pre class="r"><code>nobel_laureates %&gt;%
   unnest_tokens(word, texts) -&gt;
   nobel_laureates
 head(nobel_laureates)</code></pre>
 <pre><code>## # A tibble: 6 × 2
-##             eng_list   word
+##                 name   word
 ##                &lt;chr&gt;  &lt;chr&gt;
 ## 1 Shmuel Yosef Agnon shmuel
 ## 2 Shmuel Yosef Agnon  yosef
@@ -337,6 +338,64 @@ head(nobel_laureates)</code></pre>
 ## 4 Shmuel Yosef Agnon hebrew
 ## 5 Shmuel Yosef Agnon  שמואל
 ## 6 Shmuel Yosef Agnon   יוסף</code></pre>
+<p>Давайте посчитаем слова!</p>
+<pre class="r"><code>nobel_laureates %&gt;%
+  count(word, sort = TRUE) -&gt;
+  word_count
+head(word_count)</code></pre>
+<pre><code>## # A tibble: 6 × 2
+##    word     n
+##   &lt;chr&gt; &lt;int&gt;
+## 1   the 21457
+## 2    of 12714
+## 3    in 11652
+## 4   and 10561
+## 5     a  7929
+## 6    to  7442</code></pre>
+<p>Эти ребята вставили стопслова!</p>
+<pre class="r"><code>data(stop_words)
+nobel_laureates %&gt;%
+  anti_join(stop_words) %&gt;% 
+  count(word, sort = TRUE)</code></pre>
+<pre><code>## # A tibble: 27,586 × 2
+##          word     n
+##         &lt;chr&gt; &lt;int&gt;
+## 1   published   721
+## 2        time   683
+## 3        life   623
+## 4       prize   613
+## 5       wrote   599
+## 6         war   597
+## 7  literature   574
+## 8       world   509
+## 9       nobel   475
+## 10       book   454
+## # ... with 27,576 more rows</code></pre>
+<p>Давайте нарисуем картинку!</p>
+<pre class="r"><code>nobel_laureates %&gt;%
+  anti_join(stop_words) %&gt;% 
+  count(word, sort = TRUE) %&gt;% 
+  filter(n &gt; 350) %&gt;%
+  mutate(word = reorder(word, n)) %&gt;%
+  ggplot(aes(word, n)) +
+  geom_bar(stat = &quot;identity&quot;) +
+  xlab(NULL) +
+  coord_flip()</code></pre>
+<p><img src="Lab_12_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>А как это устроено по авторам?</p>
+<pre class="r"><code>nobel_laureates %&gt;%
+  filter(name == c(&quot;Bob Dylan&quot;, &quot;Ernest Hemingway&quot;)) %&gt;% 
+  anti_join(stop_words) %&gt;% 
+  group_by(name) %&gt;% 
+  count(word, sort = TRUE) %&gt;% 
+  filter(n &gt; 10) %&gt;%
+  mutate(word = reorder(word, n)) %&gt;%
+  ggplot(aes(word, n)) +
+  geom_bar(stat = &quot;identity&quot;) +
+  xlab(NULL) +
+  coord_flip() +
+  facet_wrap(~name, scales =  &quot;free&quot;)</code></pre>
+<p><img src="Lab_12_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
 
 
