@@ -57,3 +57,5 @@ title: "Курс 'R, визуализация и статистика'"
 
 * [презентация](https://github.com/agricolamz/FE_R_course/raw/master/Lab%2011.%20Clustering,_decision_trees.pdf)
 * [материалы занятия](https://agricolamz.github.io/FE_R_course/Lab_11.html)
+
+### [Примеры экзаменационных вопросов](https://agricolamz.github.io/FE_R_course/EXAMple.html)
