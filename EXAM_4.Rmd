@@ -1,0 +1,26 @@
+---
+title: "Экзаменационный вопрос 4"
+---
+
+## Readability
+В [дататсет](http://goo.gl/txmyO9) записаны данные автоматических измерений readability для польских текстов. 
+
+* FOG
+* PL
+* FP
+* Jasnopis
+* FrequencyQ
+
+Какие переменные наиболее скоррелированы?
+
+```{r, include=FALSE}
+library(tidyverse)
+
+df <- read.csv("http://goo.gl/txmyO9", sep = "\t")
+
+df[,-1] %>% 
+  cor() %>% 
+  as.table() %>% 
+  as.data.frame() %>% 
+  arrange(desc(Freq))
+```

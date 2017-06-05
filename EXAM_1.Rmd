@@ -1,0 +1,29 @@
+---
+title: "Экзаменационный вопрос 1"
+---
+
+## Расказы А. П. Чехова
+В [датасет](https://goo.gl/KqwWTB) записаны данные из 30 ассказов А. П. Чехова:
+
+* n_i -- количество гласных и в каждом рассказе
+* n_V -- количество других гласных
+
+Посчитайте среднеквадратическое отклонение и постройте график:
+
+```{r, message= FALSE, echo = FALSE}
+library(tidyverse)
+
+df <- read.csv("https://goo.gl/KqwWTB")
+
+df %>% 
+  gather(key = type, value = number, n_i:n_V) %>% 
+  group_by(type) %>% 
+  summarise(mean = mean(number),
+            sd = sd(number)) %>% 
+  ggplot(aes(type, mean, fill = type))+
+  geom_bar(stat = "identity")+
+  geom_errorbar(aes(ymin = mean-sd, ymax = mean+sd), width = 0.2)+
+  labs(y = "mean number")
+```
+
+

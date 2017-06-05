@@ -1,0 +1,27 @@
+---
+title: "Экзаменационный вопрос 2"
+---
+
+## Количество именных групп у ребенка
+В [Huttenlocher, Vasilyeva, Cymerman, Levine 2002] авторы исследовали 46 пар матерей и их детей (возростом от 47 до 59 месяцев, средний возраст -- 54). Они записали по 2 часа жизни и посчитали количество именных групп у детей и их матерей. Постройте регрессию, предсказывающую количество имееных групп у ребенка на основе количства именных групп матери.
+
+Данные: http://goo.gl/Qo3Yy2
+
+
+```{r, message= FALSE, echo = FALSE}
+library(tidyverse)
+
+df <- read.csv("http://goo.gl/Qo3Yy2")
+
+df %>%
+  ggplot(aes(mother, child))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r, include = FALSE}
+fit <- lm(child~mother, data = df)
+summary(fit)
+```
+
+Приведите формулу регрессионной прямой.
